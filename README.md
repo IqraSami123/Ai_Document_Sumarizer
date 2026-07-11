@@ -54,3 +54,8 @@ uvicorn app.main:app --reload
 Configuration is provided through environment variables. See `.env.example` for the available values.
 
 `OPENAI_API_KEY` is required to generate summaries. PDFs must be text-based and no larger than 20 MB.
+
+## 🎥 Demo
+
+Loom Demo: [https://www.loom.com/share/9bbdee0aa3574c108de1713b3d2e088d](https://www.loom.com/share/9bbdee0aa3574c108de1713b3d2e088d )
+
