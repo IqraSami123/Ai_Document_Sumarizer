@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="app-container" aria-labelledby="page-title">
+  <header class="hero">
+    <p class="eyebrow">AI-powered document intelligence</p>
+    <h1 id="page-title" class="app-title">{{ app_name }}</h1>
+    <p class="lead">Upload a text-based PDF and receive a clear, focused summary in seconds.</p>
+  </header>
+  <form id="upload-form" class="upload-form" novalidate>
+    <label id="drop-zone" class="drop-zone" for="pdf-file">
+      <input id="pdf-file" name="file" type="file" accept="application/pdf,.pdf" hidden />
+      <span class="upload-icon" aria-hidden="true">&uarr;</span>
+      <strong>Drag and drop your PDF here</strong>
+      <span>or browse your files &middot; Maximum size 20 MB</span>
+      <span id="file-name" class="file-name" aria-live="polite"></span>
+    </label>
+    <button id="submit-button" class="button" type="submit">Summarize document</button>
+  </form>
+  <section id="status-panel" class="status-panel" hidden aria-live="polite">
+    <span class="spinner" aria-hidden="true"></span><span id="status-message">Preparing your document&hellip;</span>
+  </section>
+  <p id="error-message" class="error-message" role="alert" hidden></p>
+  <section id="summary-card" class="summary-card" hidden aria-labelledby="summary-title">
+    <div class="summary-header"><div><p class="eyebrow">Generated summary</p><h2 id="summary-title">Your document, distilled.</h2></div><button id="copy-button" class="secondary-button" type="button">Copy summary</button></div>
+    <p id="summary-text"></p>
+    <footer><span id="word-count"></span><span id="processing-time"></span><button id="reset-button" class="text-button" type="button">Summarize another PDF</button></footer>
+  </section>
+</section>
+{% endblock %}

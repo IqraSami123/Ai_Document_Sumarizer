@@ -1,0 +1,25 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${HOST_PORT:-8001}:8000"
+    environment:
+      APP_NAME: "${APP_NAME:-AI Document Summarizer}"
+      APP_ENV: "${APP_ENV:-production}"
+      DEBUG: "${DEBUG:-false}"
+      HOST: "0.0.0.0"
+      PORT: "8000"
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      OPENAI_MODEL: "${OPENAI_MODEL:-gpt-4.1-mini}"
+      SUMMARY_WORD_TARGET: "${SUMMARY_WORD_TARGET:-150}"
+      OPENAI_TIMEOUT_SECONDS: "${OPENAI_TIMEOUT_SECONDS:-60}"
+      OPENAI_MAX_RETRIES: "${OPENAI_MAX_RETRIES:-2}"
+      API_ACCESS_KEY: "${API_ACCESS_KEY:-}"
+      CORS_ORIGINS: "${CORS_ORIGINS:-}"
+      LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
